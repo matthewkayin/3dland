@@ -80,6 +80,7 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="arrow" type="Spatial" parent="player"]
+visible = false
 
 [node name="StaticBody" type="MeshInstance" parent="player/arrow"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
@@ -87,6 +88,7 @@ mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
 
 [node name="arrow2" type="Spatial" parent="player"]
+visible = false
 
 [node name="StaticBody" type="MeshInstance" parent="player/arrow2"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
@@ -94,6 +96,7 @@ mesh = SubResource( 8 )
 material/0 = SubResource( 10 )
 
 [node name="arrow3" type="Spatial" parent="player"]
+visible = false
 
 [node name="StaticBody" type="MeshInstance" parent="player/arrow3"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
@@ -111,7 +114,7 @@ __meta__ = {
 [node name="speed" type="Label" parent="ui"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "100 MPH"
 __meta__ = {
