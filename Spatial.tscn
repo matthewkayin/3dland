@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://peach.png" type="Texture" id=1]
 [ext_resource path="res://donut_plains.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://camera.gd" type="Script" id=4]
 [ext_resource path="res://ui.gd" type="Script" id=5]
 [ext_resource path="res://hack.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://speedometer.png" type="Texture" id=7]
+[ext_resource path="res://needle.png" type="Texture" id=8]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1292, 1, 1108 )
@@ -19,20 +21,6 @@ albedo_texture = ExtResource( 2 )
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.1
 height = 0.15
-
-[sub_resource type="CylinderMesh" id=8]
-top_radius = 0.0
-bottom_radius = 0.1
-height = 0.25
-
-[sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 1, 1, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=11]
-albedo_color = Color( 0, 1, 0, 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 22
@@ -79,29 +67,8 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.05
 shape = SubResource( 4 )
 disabled = true
 
-[node name="arrow" type="Spatial" parent="player"]
-visible = false
-
-[node name="StaticBody" type="MeshInstance" parent="player/arrow"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
-mesh = SubResource( 8 )
-material/0 = SubResource( 9 )
-
-[node name="arrow2" type="Spatial" parent="player"]
-visible = false
-
-[node name="StaticBody" type="MeshInstance" parent="player/arrow2"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
-mesh = SubResource( 8 )
-material/0 = SubResource( 10 )
-
-[node name="arrow3" type="Spatial" parent="player"]
-visible = false
-
-[node name="StaticBody" type="MeshInstance" parent="player/arrow3"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.179206, 0.494056 )
-mesh = SubResource( 8 )
-material/0 = SubResource( 11 )
+[node name="gas_tap_timer" type="Timer" parent="player"]
+one_shot = true
 
 [node name="ui" type="Control" parent="."]
 margin_right = 40.0
@@ -112,11 +79,25 @@ __meta__ = {
 }
 
 [node name="speed" type="Label" parent="ui"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 913.0
+margin_top = 400.0
+margin_right = 1004.0
+margin_bottom = 427.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "100 MPH"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="speedometer" type="Sprite" parent="ui"]
+position = Vector2( 857, 500 )
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="needle" type="Sprite" parent="ui/speedometer"]
+position = Vector2( 47, 97 )
+rotation = -3.14159
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( 0, -3 )
